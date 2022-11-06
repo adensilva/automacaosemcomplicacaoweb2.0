@@ -26,4 +26,7 @@ public class MediaTest {
     public int subtraiValor(int v1, int v2){
         return v1-v2;
     }
+    public int multiplicaValor(int v1, int v2){
+        return v1*v2;
+    }
 }
