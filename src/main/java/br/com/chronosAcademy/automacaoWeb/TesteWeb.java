@@ -1,11 +1,12 @@
 package br.com.chronosAcademy.automacaoWeb;
 
 import br.com.chronosAcademy.core.Driver;
+import br.com.chronosAcademy.pages.CursosPage;
+import br.com.chronosAcademy.pages.PrincipalPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
@@ -15,34 +16,42 @@ public class TesteWeb {
 
     WebDriver driver;
     Driver driverWeb;
+    PrincipalPage principalPage;
+    CursosPage cursosPage;
+
 
 
     @BeforeClass
     public void inicializaTeste(){
         driverWeb = new Driver("chrome");
-
         driver = driverWeb.getDriver();
-
         driver.get("http://www.chronosacademy.com.br");
-
-
+        principalPage = new PrincipalPage(driver);
     }
 
     @Test
-    public void primeiroteste(){
-        System.out.println("primeiroteste()");
-        String xpathTitulo  = "//section[2]//h4";
-        //String xpathProfessor = "//section[4]/div[2]/div/div/div/div/section/div/div/div[2]/div/div/div/div/div/div[2]//span";
-        WebElement txtTitulo = driver.findElement(By.xpath(xpathTitulo));
-        //WebElement txtProfessor = driver.findElement(By.xpath(xpathProfessor));
-        String titulo = txtTitulo.getText();
+    public void primeiroTeste(){
+        System.out.println("primeiroTeste()");
+        String titulo = principalPage.getTitulo();
         System.out.println("titulo obtido: "+titulo);
-        //System.out.println("titulo: "+txtProfessor.getText());
 
         Assert.assertEquals("Porque Tempo É Conhecimento", titulo);
         //Assert.assertEquals("PROFESSOR QUALIFICADO", txtProfessor.getText());
+    }
+
+    @Test
+    public void segundoTeste(){
+        System.out.println("segundoTeste()");
+        principalPage.clickBotao();
+
+        cursosPage = new CursosPage(driver);
+        System.out.println("segundoTeste()");
+        String titulo = cursosPage.getTitulo2();
+        System.out.println("titulo obtido: "+titulo);
+        Assert.assertEquals("Conheça todos os nossos cursos", titulo);
 
     }
+
 
     @AfterClass
     public void finalizaTeste(){
