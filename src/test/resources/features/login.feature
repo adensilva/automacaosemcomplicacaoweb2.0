@@ -1,7 +1,8 @@
 #language:pt
 Funcionalidade: login
 
-  Contexto: Dado que a modal esteja sendo exibida
+  Contexto:
+    Dado que a modal esteja sendo exibida
 
   Cenario: Fechar a modal ao clicar fora da mesma
     Quando for realizado um clique fora da modal
