@@ -59,5 +59,6 @@ public class LoginSteps {
 
     @Entao("o botao sign in deve permanecer desabilitado")
     public void oBotaoSignInDevePermanecerDesabilitado() {
+
     }
 }
