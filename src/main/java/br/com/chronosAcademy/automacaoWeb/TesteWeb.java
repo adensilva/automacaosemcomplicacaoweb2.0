@@ -1,6 +1,7 @@
 package br.com.chronosAcademy.automacaoWeb;
 
 import br.com.chronosAcademy.core.Driver;
+import br.com.chronosAcademy.enums.Browser;
 import br.com.chronosAcademy.pages.CursosPage;
 import br.com.chronosAcademy.pages.PrincipalPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -23,7 +24,7 @@ public class TesteWeb {
 
     @BeforeClass
     public void inicializaTeste(){
-        driverWeb = new Driver("chrome");
+        driverWeb = new Driver(Browser.CHROME);
         driver = driverWeb.getDriver();
         driver.get("http://www.chronosacademy.com.br");
         principalPage = new PrincipalPage(driver);

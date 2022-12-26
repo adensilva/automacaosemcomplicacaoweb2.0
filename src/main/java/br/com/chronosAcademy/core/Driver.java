@@ -1,5 +1,6 @@
 package br.com.chronosAcademy.core;
 
+import br.com.chronosAcademy.enums.Browser;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,30 +14,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Driver {
     private static WebDriver driver;
     private static WebDriverWait wait;
-    public Driver(String navegador){
+    public Driver(Browser navegador){
         switch (navegador){
-            case "chrome":
-                System.out.println("inicializaTeste()");
+            case CHROME:
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
-            case "ie":
-                System.out.println("inicializaTeste()");
+            case IE:
                 WebDriverManager.iedriver().setup();
                 driver = new InternetExplorerDriver();
                 break;
-            case "firefox":
-                System.out.println("inicializaTeste()");
+            case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
-            case "edge":
-                System.out.println("inicializaTeste()");
+            case EDGE:
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
                 break;
             default:
-                System.out.println("inicializaTeste()");
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
